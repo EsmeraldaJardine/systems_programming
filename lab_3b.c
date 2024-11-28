@@ -12,18 +12,22 @@
 #include <stdio.h>
 #include <string.h>
 
-void print_sentence(char phrase[]){
-    printf("%lu \n", strlen(phrase));
-    for (int i = 0; i < strlen(phrase); i++ ){
+int print_sentence(char phrase[]){
+    int l = strlen(phrase);
+    for (int i = 0; i < l; i++ ){
          printf("%c", phrase[i]);
         if (phrase[i] == '.'){
-            printf("\n");
-        }
+            printf("\n"); 
+        
+        }   
     }
+    return l;
 }
+
 
 int main(){
 
     char phrase[] = "Hello. It's me.";
-    print_sentence(phrase);
+    int count = print_sentence(phrase); // Function is called here
+    printf("%d \n", count);// The return value is printed
 }
