@@ -43,32 +43,36 @@ void count_vowels(char character, struct vowel_count *pointer){
     }
 }
 
-int print_sentence(char phrase[]){
-    int l = strlen(phrase);  
-    struct vowel_count test1 = {.a=0,.e=0,.i=0,.o=0,.u=0};
-    for (int i = 0; i < l; i++ ){
+void print_sentence(char phrase[], struct vowel_count *vowels) {
+    int l = strlen(phrase);
 
-        if( tolower(phrase[i]) == tolower(phrase[i-1])){
-            printf("\na: %d \ne: %d \ni: %d\no: %d\nu: %d \n", test1.a, test1.e, test1.i, test1.o, test1.u);
-            return i;
-            }
-        if (phrase[i] == '.'){
+    for (int i = 0; i < l; i++) {
+        count_vowels(phrase[i], vowels);
+
+        if (i > 0 && phrase[i] == phrase[i - 1]) {
+            break;
+        }
+
+        printf("%c", phrase[i]);
+
+        if (phrase[i] == '.') {
             printf("\n");
-            printf("a: %d \ne: %d \ni: %d\no: %d\nu: %d \n", test1.a, test1.e, test1.i, test1.o, test1.u);  
-            return i;
-            }
-        count_vowels(phrase[i], &test1);
-        printf("%c", phrase[i]);        
-    }   
-    return l;
+        }
+    }
 }
 
-
-
-
-
-int main(){
+int main() {
     char phrase[] = "hello. it's me.";
-    int count = print_sentence(phrase); // Function is called here
-    printf("\n %d \n", count);// The return value is printed
+    struct vowel_count vowels = {0, 0, 0, 0, 0};
+    print_sentence(phrase, &vowels); // Function is called here
+    int count = strlen(phrase);
+    printf("\nCharacter count: %d\n", count); // The return value is printed
+    printf("Vowel counts: a=%d, e=%d, i=%d, o=%d, u=%d\n", vowels.a, vowels.e, vowels.i, vowels.o, vowels.u);
+
+    return 0;
 }
+
+/*
+issues: this was super hard for some reason. Maybe because of my limited knowledge of C...
+
+*/
