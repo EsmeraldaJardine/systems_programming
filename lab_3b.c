@@ -11,23 +11,64 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <ctype.h>
+ struct vowel_count {
+        int a;
+        int e;
+        int i;
+        int o;
+        int u;
+};
+
+void count_vowels(char character, struct vowel_count *pointer){ 
+    switch (tolower(character)){
+    case 'a':
+        (*pointer).a +=1;
+        break;
+    case 'e':
+        (*pointer).e +=1;
+        break;
+    case 'i':
+        (*pointer).i +=1;
+        break;
+    case 'o':
+        (*pointer).o += 1;
+        break;
+    case 'u':
+        (*pointer).u +=1;
+            break;
+    
+    default:
+        break;
+    }
+}
 
 int print_sentence(char phrase[]){
-    int l = strlen(phrase);
+    int l = strlen(phrase);  
+    struct vowel_count test1 = {.a=0,.e=0,.i=0,.o=0,.u=0};
     for (int i = 0; i < l; i++ ){
-        if( phrase[i] == phrase[i-1]){return i;}
-        
-        printf("%c", phrase[i]);
-        
-        if (phrase[i] == '.'){printf("\n");}   
-    }
+
+        if( tolower(phrase[i]) == tolower(phrase[i-1])){
+            printf("\na: %d \ne: %d \ni: %d\no: %d\nu: %d \n", test1.a, test1.e, test1.i, test1.o, test1.u);
+            return i;
+            }
+        if (phrase[i] == '.'){
+            printf("\n");
+            printf("a: %d \ne: %d \ni: %d\no: %d\nu: %d \n", test1.a, test1.e, test1.i, test1.o, test1.u);  
+            return i;
+            }
+        count_vowels(phrase[i], &test1);
+        printf("%c", phrase[i]);        
+    }   
     return l;
 }
 
 
-int main(){
 
-    char phrase[] = "Hello. It's me.";
+
+
+int main(){
+    char phrase[] = "hello. it's me.";
     int count = print_sentence(phrase); // Function is called here
     printf("\n %d \n", count);// The return value is printed
 }
