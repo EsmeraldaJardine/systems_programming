@@ -10,8 +10,20 @@
 */
 
 #include <stdio.h>
+#include <string.h>
+
+void print_sentence(char phrase[]){
+    printf("%lu \n", strlen(phrase));
+    for (int i = 0; i < strlen(phrase); i++ ){
+         printf("%c", phrase[i]);
+        if (phrase[i] == '.'){
+            printf("\n");
+        }
+    }
+}
 
 int main(){
 
-    char sentence[] = "Hello. It's me.";
+    char phrase[] = "Hello. It's me.";
+    print_sentence(phrase);
 }
