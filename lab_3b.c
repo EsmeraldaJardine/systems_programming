@@ -15,11 +15,11 @@
 int print_sentence(char phrase[]){
     int l = strlen(phrase);
     for (int i = 0; i < l; i++ ){
-         printf("%c", phrase[i]);
-        if (phrase[i] == '.'){
-            printf("\n"); 
+        if( phrase[i] == phrase[i-1]){return i;}
         
-        }   
+        printf("%c", phrase[i]);
+        
+        if (phrase[i] == '.'){printf("\n");}   
     }
     return l;
 }
@@ -29,5 +29,5 @@ int main(){
 
     char phrase[] = "Hello. It's me.";
     int count = print_sentence(phrase); // Function is called here
-    printf("%d \n", count);// The return value is printed
+    printf("\n %d \n", count);// The return value is printed
 }
