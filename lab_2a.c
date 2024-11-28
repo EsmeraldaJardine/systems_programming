@@ -35,9 +35,9 @@ int main(){
     printf("Size of float: %lu bytes\n", sizeof(f));
     printf("Size of double: %lu bytes\n", sizeof(d));
     printf("Size of long double: %lu bytes\n", sizeof(ld));
-//Nowlookatlimits.h and float.h, and notice the value range that each data type affords.
+    
+//Now look at limits.h and float.h, and notice the value range that each data type affords.
 
-    // Printing max values of data types
     printf("\nMax values:\n");
     printf("Max char: %d\n", CHAR_MAX);
     printf("Max int: %d\n", INT_MAX);
