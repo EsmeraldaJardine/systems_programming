@@ -26,8 +26,24 @@ Write aprogram to print prime numbers between 1 and 1,000. A prime number is an 
  You could identify if a number n is prime by checking whether it is divisible by any of the integers between and
  including 2 and n/2.
 */
+int number;
+int isPrime;
 
-
+for (number=2; number<=1000; number++){
+isPrime = 1;
+        for(int i = 2; i <= number/2; i++){
+                if (number%i==0){
+                        isPrime = 0;
+                        break;
+                }
+                
+        }
+        if (isPrime){
+                        printf("%d is prime", number);
+                        printf("\n");
+                }
+        
+}
 return 0;
 }
 
